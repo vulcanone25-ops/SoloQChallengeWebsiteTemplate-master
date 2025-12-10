@@ -58,7 +58,7 @@ export default function Leaderboard() {
   return (
     <div className="p-8 w-full max-w-[1600px] mx-auto">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-4xl font-bold">Vulcanone Challenge</h1>
+        <h1 className="text-4xl font-bold">DoggoQueue Challenge</h1>
         {/* Countdown Card */}
         <div className="bg-gray-900 border border-gray-700 rounded-xl px-6 py-4 shadow-md w-[280px]">
           <div className="text-gray-300 text-xs">Fin dans</div>

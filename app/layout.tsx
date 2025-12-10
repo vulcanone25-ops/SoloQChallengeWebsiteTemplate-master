@@ -14,10 +14,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Vulcanone Challenge",
-    template: "%s | Vulcanone Challenge",
+    default: "DoggoQueue Challenge",
+    template: "%s | DoggoQueue Challenge",
   },
-  description: "Vulcanone Challenge leaderboard",
+  description: "DoggoQueue Challenge leaderboard",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
