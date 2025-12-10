@@ -2,7 +2,7 @@
     { "gameName": "Silectio", "tagLine": "EUW" ,"champion":"Viktor", "lp_base": 300},
     { "gameName": "Vulcanone", "tagLine": "BARK" , "champion":"Karma", "lp_base": 2652},
     { "gameName": "Enerya", "tagLine": "EUW", "champion": "Bard", "lp_base": 912},
-    { "gameName": "Bonheur", "tagLine": "Happy", "champion": "Yuumi", "lp_base": 2102},
+    { "gameName": "Bonheur", "tagLine": "Happy", "champion": "Yuumi", "lp_base": 2118},
     { "gameName": "Vivarium", "tagLine": "000", "champion": "Gwen", "lp_base": 1836},
     { "gameName": "Midfirewear", "tagLine": "PRIME", "champion": "Fizz", "lp_base":2696},
     { "gameName": "HoneySma", "tagLine": "8521", "champion": "Azir", "lp_base": 2270},
