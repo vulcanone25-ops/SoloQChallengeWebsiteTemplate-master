@@ -1,5 +1,6 @@
 [
-    { "gameName": "Silectio", "tagLine": "EUW" ,"champion":"Viktor", "lp_base": 300},
+    { "gameName": "Vaimox", "tagLine": "EUW", "champion": "Xayah", "lp_base": 500},
+    { "gameName": "Silectio", "tagLine": "EUW" ,"champion":"Viktor", "lp_base": 500},
     { "gameName": "Vulcanone", "tagLine": "BARK" , "champion":"Karma", "lp_base": 2652},
     { "gameName": "Enerya", "tagLine": "EUW", "champion": "Bard", "lp_base": 912},
     { "gameName": "Bonheur", "tagLine": "Happy", "champion": "Yuumi", "lp_base": 2118},
@@ -8,6 +9,5 @@
     { "gameName": "HoneySma", "tagLine": "8521", "champion": "Azir", "lp_base": 2270},
     { "gameName": "Sahorï", "tagLine": "0806", "champion": "Zyra", "lp_base": 2000},
     { "gameName": "Amistocle0", "tagLine": "EUW", "champion": "Yunara", "lp_base": 1843},
-    { "gameName": "hitaton1", "tagLine": "EUW", "champion": "Lissandra", "lp_base": 2102},
-     { "gameName": "Vaimox", "tagLine": "EUW", "champion": "Xayah", "lp_base": 300}
+    { "gameName": "hitaton1", "tagLine": "EUW", "champion": "Lissandra", "lp_base": 2102}
 ]
