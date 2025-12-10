@@ -1,12 +1,12 @@
 [
-    { "gameName": "Silectio", "tagLine": "EUW" ,"champion":"Viktor", "lp_base": 0},
-    { "gameName": "Vulcanone", "tagLine": "BARK" , "champion":"Karma", "lp_base": 0},
-    { "gameName": "Enerya", "tagLine": "EUW", "champion": "Bard", "lp_base": 0},
-    { "gameName": "Bonheur", "tagLine": "Happy", "champion": "Yuumi", "lp_base": 0},
-    { "gameName": "Vivarium", "tagLine": "000", "champion": "Gwen", "lp_base": 0},
-    { "gameName": "Midfirewear", "tagLine": "PRIME", "champion": "Fizz", "lp_base": 0},
-    { "gameName": "HoneySma", "tagLine": "8521", "champion": "Azir", "lp_base": 0},
-    { "gameName": "Sahorï", "tagLine": "0806", "champion": "Zyra", "lp_base": 0},
-    { "gameName": "Amistocle0", "tagLine": "EUW", "champion": "Yunara", "lp_base": 0},
-    { "gameName": "hitaton1", "tagLine": "EUW", "champion": "Milio", "lp_base": 0}
+    { "gameName": "Silectio", "tagLine": "EUW" ,"champion":"Viktor", "lp_base": 300},
+    { "gameName": "Vulcanone", "tagLine": "BARK" , "champion":"Karma", "lp_base": 2652},
+    { "gameName": "Enerya", "tagLine": "EUW", "champion": "Bard", "lp_base": 912},
+    { "gameName": "Bonheur", "tagLine": "Happy", "champion": "Yuumi", "lp_base": 2102},
+    { "gameName": "Vivarium", "tagLine": "000", "champion": "Gwen", "lp_base": 1836},
+    { "gameName": "Midfirewear", "tagLine": "PRIME", "champion": "Fizz", "lp_base":2696},
+    { "gameName": "HoneySma", "tagLine": "8521", "champion": "Azir", "lp_base": 2270},
+    { "gameName": "Sahorï", "tagLine": "0806", "champion": "Zyra", "lp_base": 2000},
+    { "gameName": "Amistocle0", "tagLine": "EUW", "champion": "Yunara", "lp_base": 1843},
+    { "gameName": "hitaton1", "tagLine": "EUW", "champion": "Lissandra", "lp_base": 2102}
 ]
