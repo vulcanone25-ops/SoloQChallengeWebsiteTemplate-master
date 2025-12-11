@@ -43,6 +43,23 @@ export default function Leaderboard() {
     return () => clearInterval(id);
   }, []);
 
+const saved = JSON.parse(localStorage.getItem("lolChallengeReset") || "{}");
+
+const winsBefore = saved.winsBefore || 0;
+const lossesBefore = saved.lossesBefore || 0;
+
+const wins = Math.max(0, p.winsTotal - winsBefore);
+const losses = Math.max(0, p.lossesTotal - lossesBefore);
+const matches = wins + losses;
+
+const resetChallenge = () => {
+  localStorage.setItem("lolChallengeReset", JSON.stringify({
+    winsBefore: p.winsTotal,
+    lossesBefore: p.lossesTotal,
+    date: new Date().toISOString()
+  }));
+};
+
 const getTierColor = (tier?: string) => {
   switch ((tier ?? "").toLowerCase()) {
     case "challenger": return "bg-blue-500 text-white";
@@ -262,3 +279,12 @@ const getTierColor = (tier?: string) => {
     </div>
   );
 }
+
+<div className="border-t border-gray-800 mb-6" />
+
+<button 
+  onClick={resetChallenge} 
+  className="bg-red-600 px-4 py-2 rounded text-white"
+>
+  Reset aujourd’hui
+</button>
