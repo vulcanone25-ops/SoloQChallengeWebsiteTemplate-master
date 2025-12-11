@@ -203,39 +203,54 @@ const getTierColor = (tier?: string) => {
                 {/* Winrate as semi-circle gauge */}
                 <td className="relative p-6 text-center">
                   {(() => {
-                    const wins = Number(p.wins || 0);
-                    const losses = Number(p.losses || 0);
-                    const matches = wins + losses;
-                    const rate = matches > 0 ? Math.round((wins / matches) * 100) : 0;
-                    const radius = 40;
-                    const circumference = Math.PI * radius; // semi-circle length
-                    const offset = circumference * (1 - rate / 100);
-                    
-                    return (
-                      <div className="inline-flex items-center justify-center">
-                        <svg width="120" height="70" viewBox={`0 0 ${radius * 3} ${radius * 1.75}`}>
-                          {/* Base red arc */}
-                          <path
-                            d={`M 20 ${radius+5} A ${radius} ${radius} 0 0 1 ${20 + 2*radius} ${radius+5}`}
-                            stroke="#7f1d1d" strokeWidth="12" fill="none" strokeLinecap="round"
-                          />
-                          {/* Green progress arc */}
-                          <path
-                            d={`M 20 ${radius+5} A ${radius} ${radius} 0 0 1 ${20 + 2*radius} ${radius+5}`}
-                            stroke="#16a34a" strokeWidth="12" fill="none" strokeLinecap="round"
-                            style={{ strokeDasharray: `${circumference}px`, strokeDashoffset: `${offset}px` }}
-                          />
-                          {/* Percentage text */}
-                          <text x="50%" y="60" textAnchor="middle" fill="#fff" fontSize="14" fontWeight="600">{rate}%</text>
-                        </svg>
-                        <div className="ml-4">
-                          <div className="text-white font-semibold text-sm">{wins}W </div>
-                          <div className="text-white font-semibold text-sm">{losses}L</div>
-                          <div className="text-gray-400 text-xs">{matches} matchs</div>
-                        </div>
-                      </div>
-                    );
-                  })()}
+                          // === RESET SYSTEM (localStorage) ===
+                          const saved = JSON.parse(localStorage.getItem("lolChallengeReset") || "{}");
+
+                          // stats totales venant de ton backend
+                          const totalWins = Number(p.wins || 0);
+                          const totalLosses = Number(p.losses || 0);
+
+                          // valeurs au moment du reset
+                          const winsBefore = saved.winsBefore || 0;
+                          const lossesBefore = saved.lossesBefore || 0;
+
+                          // stats affichées depuis reset
+                          const wins = Math.max(0, totalWins - winsBefore);
+                          const losses = Math.max(0, totalLosses - lossesBefore);
+                          const matches = wins + losses;
+                          const rate = matches > 0 ? Math.round((wins / matches) * 100) : 0;
+
+                          const radius = 40;
+                          const circumference = Math.PI * radius;
+                          const offset = circumference * (1 - rate / 100);
+
+                          return (
+                            <div className="inline-flex items-center justify-center">
+                              {/* gauge SVG */}
+                              <svg width="120" height="70" viewBox={`0 0 ${radius * 3} ${radius * 1.75}`}>
+                                <path
+                                  d={`M 20 ${radius+5} A ${radius} ${radius} 0 0 1 ${20 + 2*radius} ${radius+5}`}
+                                  stroke="#7f1d1d" strokeWidth="12" fill="none" strokeLinecap="round"
+                                />
+                                <path
+                                  d={`M 20 ${radius+5} A ${radius} ${radius} 0 0 1 ${20 + 2*radius} ${radius+5}`}
+                                  stroke="#16a34a" strokeWidth="12" fill="none" strokeLinecap="round"
+                                  style={{ strokeDasharray: `${circumference}px`, strokeDashoffset: `${offset}px` }}
+                                />
+                                <text x="50%" y="60" textAnchor="middle" fill="#fff" fontSize="14" fontWeight="600">
+                                  {rate}%
+                                </text>
+                              </svg>
+
+                              {/* Text */}
+                              <div className="ml-4">
+                                <div className="text-white font-semibold text-sm">{wins}W</div>
+                                <div className="text-white font-semibold text-sm">{losses}L</div>
+                                <div className="text-gray-400 text-xs">{matches} matchs</div>
+                              </div>
+                            </div>
+                          );
+                        })()}
                 </td>
 
                 {/* DPM link icon only */}
