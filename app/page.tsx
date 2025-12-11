@@ -43,24 +43,6 @@ export default function Leaderboard() {
     return () => clearInterval(id);
   }, []);
 
-///////////////////////////////////////////////////////
-const saved = JSON.parse(localStorage.getItem("lolChallengeReset") || "{}");
-
-const winsBefore = saved.winsBefore || 0;
-const lossesBefore = saved.lossesBefore || 0;
-
-const wins = Math.max(0, p.winsTotal - winsBefore);
-const losses = Math.max(0, p.lossesTotal - lossesBefore);
-const matches = wins + losses;
-///////////////////////////////////////////////////////
-
-const resetChallenge = () => {
-  localStorage.setItem("lolChallengeReset", JSON.stringify({
-    winsBefore: p.winsTotal,
-    lossesBefore: p.lossesTotal,
-    date: new Date().toISOString()
-  }));
-};
 
 const getTierColor = (tier?: string) => {
   switch ((tier ?? "").toLowerCase()) {
@@ -83,11 +65,8 @@ const getTierColor = (tier?: string) => {
           <div className="text-white text-lg font-semibold tracking-wide whitespace-nowrap">{timeLeft}</div>
         </div>
       </div>
-      <button 
-        onClick={resetChallenge} 
-        className="bg-red-600 px-4 py-2 rounded text-white">
-        Reset aujourd’hui
-      </button>
+
+      <button onClick={resetChallenge} className="bg-red-600 px-4 py-2 rounded text-white">Reset win lose </button>
 
       {/* Separator */}
       <div className="border-t border-gray-800 mb-6" />
@@ -231,6 +210,7 @@ const getTierColor = (tier?: string) => {
                     const radius = 40;
                     const circumference = Math.PI * radius; // semi-circle length
                     const offset = circumference * (1 - rate / 100);
+                    
                     return (
                       <div className="inline-flex items-center justify-center">
                         <svg width="120" height="70" viewBox={`0 0 ${radius * 3} ${radius * 1.75}`}>
