@@ -220,7 +220,7 @@ const resetChallenge = () => {
 
                           // --- MATCHES DEPUIS RESET ---
                           const gamesSinceReset = resetDate
-                            ? allGames.filter(g => new Date(g.date) >= resetDate)
+                            ? allGames.filter((g: any) => new Date(g.date) >= resetDate)
                             : allGames;
 
                           // --- CALCUL ---
