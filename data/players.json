@@ -1,5 +1,5 @@
 [
-    { "gameName": "Vaimox", "tagLine": "EUW", "champion": "Xayah", "lp_base": 500},
+    { "gameName": "Vaimox", "tagLine": "EUW", "champion": "Xayah", "lp_base": 940},
     { "gameName": "Silectio", "tagLine": "EUW" ,"champion":"Viktor", "lp_base": 440},
     { "gameName": "Vulcanone", "tagLine": "BARK" , "champion":"Karma", "lp_base": 2652},
     { "gameName": "Enerya", "tagLine": "EUW", "champion": "Bard", "lp_base": 912},
