@@ -54,7 +54,7 @@ const getTierColor = (tier?: string) => {
     case "platinum": return "bg-teal-500 text-white";
     default: return "bg-gray-700 text-white";
   }
-
+}
 const resetChallenge = () => {
   localStorage.setItem("lolChallengeReset", JSON.stringify({
     date: new Date().toISOString(),
@@ -62,8 +62,7 @@ const resetChallenge = () => {
 
   window.location.reload();
 };
-  
-};
+
   return (
     <div className="p-8 w-full max-w-[1600px] mx-auto">
       <div className="flex items-center justify-between mb-6">
@@ -229,7 +228,7 @@ const resetChallenge = () => {
                           const losses = gamesSinceReset.filter(g => g.result === "loss").length;
                           const matches = wins + losses;
                           const rate = matches > 0 ? Math.round((wins / matches) * 100) : 0;
-                          
+
                           return (
                             <div className="inline-flex items-center justify-center">
                               {/* gauge SVG */}
