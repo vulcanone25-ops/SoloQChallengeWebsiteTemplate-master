@@ -55,13 +55,11 @@ const getTierColor = (tier?: string) => {
     default: return "bg-gray-700 text-white";
   }
 }
-const resetChallenge = () => {
-  localStorage.setItem("lolChallengeReset", JSON.stringify({
-    date: new Date().toISOString(),
-  }));
 
-  window.location.reload();
-};
+const newResetDate = "2025-12-10T00:00:00.000Z"; // format ISO
+localStorage.setItem("lolChallengeReset", JSON.stringify({
+  date: newResetDate
+}));
 
   return (
     <div className="p-8 w-full max-w-[1600px] mx-auto">
@@ -74,7 +72,7 @@ const resetChallenge = () => {
         </div>
       </div>
 
-      <button onClick={resetChallenge} className="bg-red-600 px-4 py-2 rounded text-white">Reset win lose </button>
+      {/*<button onClick={resetChallenge} className="bg-red-600 px-4 py-2 rounded text-white">Reset win lose </button>*/}
 
       {/* Separator */}
       <div className="border-t border-gray-800 mb-6" />
