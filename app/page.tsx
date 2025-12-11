@@ -68,7 +68,6 @@ const getTierColor = (tier?: string) => {
         </div>
       </div>
 
-      <button onClick={resetChallenge} className="bg-red-600 px-4 py-2 rounded text-white">Reset win lose </button>
 
       {/* Separator */}
       <div className="border-t border-gray-800 mb-6" />
