@@ -54,6 +54,15 @@ const getTierColor = (tier?: string) => {
     case "platinum": return "bg-teal-500 text-white";
     default: return "bg-gray-700 text-white";
   }
+
+const resetChallenge = () => {
+  localStorage.setItem("lolChallengeReset", JSON.stringify({
+    date: new Date().toISOString(),
+  }));
+
+  window.location.reload();
+};
+  
 };
   return (
     <div className="p-8 w-full max-w-[1600px] mx-auto">
@@ -203,27 +212,24 @@ const getTierColor = (tier?: string) => {
                 {/* Winrate as semi-circle gauge */}
                 <td className="relative p-6 text-center">
                   {(() => {
-                          // === RESET SYSTEM (localStorage) ===
+                          // --- RESET GLOBAL ---
                           const saved = JSON.parse(localStorage.getItem("lolChallengeReset") || "{}");
+                          const resetDate = saved.date ? new Date(saved.date) : null;
 
-                          // stats totales venant de ton backend
-                          const totalWins = Number(p.wins || 0);
-                          const totalLosses = Number(p.losses || 0);
+                          // --- LISTE DES MATCHES DU JOUEUR (adapter si ton champ a un autre nom) ---
+                          const allGames = p.games || []; // <--- adapte ici si ton champ ne s'appelle pas "games"
 
-                          // valeurs au moment du reset
-                          const winsBefore = saved.winsBefore || 0;
-                          const lossesBefore = saved.lossesBefore || 0;
+                          // --- MATCHES DEPUIS RESET ---
+                          const gamesSinceReset = resetDate
+                            ? allGames.filter(g => new Date(g.date) >= resetDate)
+                            : allGames;
 
-                          // stats affichées depuis reset
-                          const wins = Math.max(0, totalWins - winsBefore);
-                          const losses = Math.max(0, totalLosses - lossesBefore);
+                          // --- CALCUL ---
+                          const wins = gamesSinceReset.filter(g => g.result === "win").length;
+                          const losses = gamesSinceReset.filter(g => g.result === "loss").length;
                           const matches = wins + losses;
                           const rate = matches > 0 ? Math.round((wins / matches) * 100) : 0;
-
-                          const radius = 40;
-                          const circumference = Math.PI * radius;
-                          const offset = circumference * (1 - rate / 100);
-
+                          
                           return (
                             <div className="inline-flex items-center justify-center">
                               {/* gauge SVG */}
