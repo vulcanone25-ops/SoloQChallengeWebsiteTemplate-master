@@ -224,8 +224,8 @@ const resetChallenge = () => {
                             : allGames;
 
                           // --- CALCUL ---
-                          const wins = gamesSinceReset.filter(g => g.result === "win").length;
-                          const losses = gamesSinceReset.filter(g => g.result === "loss").length;
+                          const wins = gamesSinceReset.filter((g: any) => g.result === "win").length;
+                          const losses = gamesSinceReset.filter((g: any) => g.result === "loss").length;
                           const matches = wins + losses;
                           const rate = matches > 0 ? Math.round((wins / matches) * 100) : 0;
 
