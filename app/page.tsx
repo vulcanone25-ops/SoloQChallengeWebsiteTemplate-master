@@ -44,7 +44,7 @@ export default function Leaderboard() {
   }, []);
 
   const getTierColor = (tier: string) => {
-    switch (tier.toLowerCase()) {
+    switch (tier.toUpperCase()) {
       case "challenger": return "bg-blue-500 text-white";
       case "grandmaster": return "bg-red-600 text-white";
       case "master": return "bg-purple-600 text-white";
