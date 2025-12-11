@@ -54,12 +54,8 @@ const getTierColor = (tier?: string) => {
     case "platinum": return "bg-teal-500 text-white";
     default: return "bg-gray-700 text-white";
   }
-}
 
-const newResetDate = "2025-12-10T00:00:00.000Z"; // format ISO
-localStorage.setItem("lolChallengeReset", JSON.stringify({
-  date: newResetDate
-}));
+};
 
   return (
     <div className="p-8 w-full max-w-[1600px] mx-auto">
@@ -72,7 +68,7 @@ localStorage.setItem("lolChallengeReset", JSON.stringify({
         </div>
       </div>
 
-      {/*<button onClick={resetChallenge} className="bg-red-600 px-4 py-2 rounded text-white">Reset win lose </button>*/}
+      <button onClick={resetChallenge} className="bg-red-600 px-4 py-2 rounded text-white">Reset win lose </button>
 
       {/* Separator */}
       <div className="border-t border-gray-800 mb-6" />
@@ -209,54 +205,39 @@ localStorage.setItem("lolChallengeReset", JSON.stringify({
                 {/* Winrate as semi-circle gauge */}
                 <td className="relative p-6 text-center">
                   {(() => {
-                          // --- RESET GLOBAL ---
-                          const saved = JSON.parse(localStorage.getItem("lolChallengeReset") || "{}");
-                          const resetDate = saved.date ? new Date(saved.date) : null;
-
-                          // --- LISTE DES MATCHES DU JOUEUR (adapter si ton champ a un autre nom) ---
-                          const allGames = p.games || []; // <--- adapte ici si ton champ ne s'appelle pas "games"
-
-                          // --- MATCHES DEPUIS RESET ---
-                          const gamesSinceReset = resetDate
-                            ? allGames.filter((g: any) => new Date(g.date) >= resetDate)
-                            : allGames;
-
-                          // --- CALCUL ---
-                          const wins = gamesSinceReset.filter((g: any) => g.result === "win").length;
-                          const losses = gamesSinceReset.filter((g: any) => g.result === "loss").length;
-                          const matches = wins + losses;
-                          const rate = matches > 0 ? Math.round((wins / matches) * 100) : 0;
-                          const radius = 40; // <-- ajouter ici
-
-                            // si tu as besoin, tu peux recalculer le circumference
-                            const circumference = Math.PI * radius;
-                            const offset = circumference * (1 - rate / 100);
-                            return (
-                              <div className="inline-flex items-center justify-center">
-                                <svg width="120" height="70" viewBox={`0 0 ${radius * 3} ${radius * 1.75}`}>
-                                  {/* Base red arc */}
-                                  <path
-                                    d={`M 20 ${radius+5} A ${radius} ${radius} 0 0 1 ${20 + 2*radius} ${radius+5}`}
-                                    stroke="#7f1d1d" strokeWidth="12" fill="none" strokeLinecap="round"
-                                  />
-                                  {/* Green progress arc */}
-                                  <path
-                                    d={`M 20 ${radius+5} A ${radius} ${radius} 0 0 1 ${20 + 2*radius} ${radius+5}`}
-                                    stroke="#16a34a" strokeWidth="12" fill="none" strokeLinecap="round"
-                                    style={{ strokeDasharray: `${circumference}px`, strokeDashoffset: `${offset}px` }}
-                                  />
-                                  {/* Percentage text */}
-                                  <text x="50%" y="60" textAnchor="middle" fill="#fff" fontSize="14" fontWeight="600">{rate}%</text>
-                                </svg>
-                                <div className="ml-4">
-                                  <div className="text-white font-semibold text-sm">{wins}W </div>
-                                  <div className="text-white font-semibold text-sm">{losses}L</div>
-                                  <div className="text-gray-400 text-xs">{matches} matchs</div>
-                                </div>
-                              </div>
-                            );
-
-                        })()}
+                    const wins = Number(p.wins || 0);
+                    const losses = Number(p.losses || 0);
+                    const matches = wins + losses;
+                    const rate = matches > 0 ? Math.round((wins / matches) * 100) : 0;
+                    const radius = 40;
+                    const circumference = Math.PI * radius; // semi-circle length
+                    const offset = circumference * (1 - rate / 100);
+                    
+                    return (
+                      <div className="inline-flex items-center justify-center">
+                        <svg width="120" height="70" viewBox={`0 0 ${radius * 3} ${radius * 1.75}`}>
+                          {/* Base red arc */}
+                          <path
+                            d={`M 20 ${radius+5} A ${radius} ${radius} 0 0 1 ${20 + 2*radius} ${radius+5}`}
+                            stroke="#7f1d1d" strokeWidth="12" fill="none" strokeLinecap="round"
+                          />
+                          {/* Green progress arc */}
+                          <path
+                            d={`M 20 ${radius+5} A ${radius} ${radius} 0 0 1 ${20 + 2*radius} ${radius+5}`}
+                            stroke="#16a34a" strokeWidth="12" fill="none" strokeLinecap="round"
+                            style={{ strokeDasharray: `${circumference}px`, strokeDashoffset: `${offset}px` }}
+                          />
+                          {/* Percentage text */}
+                          <text x="50%" y="60" textAnchor="middle" fill="#fff" fontSize="14" fontWeight="600">{rate}%</text>
+                        </svg>
+                        <div className="ml-4">
+                          <div className="text-white font-semibold text-sm">{wins}W </div>
+                          <div className="text-white font-semibold text-sm">{losses}L</div>
+                          <div className="text-gray-400 text-xs">{matches} matchs</div>
+                        </div>
+                      </div>
+                    );
+                  })()}
                 </td>
 
                 {/* DPM link icon only */}
