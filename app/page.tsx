@@ -228,7 +228,11 @@ const resetChallenge = () => {
                           const losses = gamesSinceReset.filter((g: any) => g.result === "loss").length;
                           const matches = wins + losses;
                           const rate = matches > 0 ? Math.round((wins / matches) * 100) : 0;
+                          const radius = 40; // <-- ajouter ici
 
+                            // si tu as besoin, tu peux recalculer le circumference
+                            const circumference = Math.PI * radius;
+                            const offset = circumference * (1 - rate / 100);
                             return (
                               <div className="inline-flex items-center justify-center">
                                 <svg width="120" height="70" viewBox={`0 0 ${radius * 3} ${radius * 1.75}`}>
