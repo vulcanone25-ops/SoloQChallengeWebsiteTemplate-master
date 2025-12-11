@@ -43,18 +43,17 @@ export default function Leaderboard() {
     return () => clearInterval(id);
   }, []);
 
-  const getTierColor = (tier: string) => {
-    switch (tier.toLowerCase()) {
-      case "challenger": return "bg-blue-500 text-white";
-      case "grandmaster": return "bg-red-600 text-white";
-      case "master": return "bg-purple-600 text-white";
-      case "diamond": return "bg-indigo-500 text-white";
-      case "emerald": return "bg-green-500 text-white";
-      case "platinum": return "bg-teal-500 text-white";
-      default: return "bg-gray-700 text-white";
-    }
-  };
-
+const getTierColor = (tier?: string) => {
+  switch ((tier ?? "").toLowerCase()) {
+    case "challenger": return "bg-blue-500 text-white";
+    case "grandmaster": return "bg-red-600 text-white";
+    case "master": return "bg-purple-600 text-white";
+    case "diamond": return "bg-indigo-500 text-white";
+    case "emerald": return "bg-green-500 text-white";
+    case "platinum": return "bg-teal-500 text-white";
+    default: return "bg-gray-700 text-white";
+  }
+};
   return (
     <div className="p-8 w-full max-w-[1600px] mx-auto">
       <div className="flex items-center justify-between mb-6">
