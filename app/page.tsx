@@ -229,32 +229,31 @@ const resetChallenge = () => {
                           const matches = wins + losses;
                           const rate = matches > 0 ? Math.round((wins / matches) * 100) : 0;
 
-                          return (
-                            <div className="inline-flex items-center justify-center">
-                              {/* gauge SVG */}
-                              <svg width="120" height="70" viewBox={`0 0 ${radius * 3} ${radius * 1.75}`}>
-                                <path
-                                  d={`M 20 ${radius+5} A ${radius} ${radius} 0 0 1 ${20 + 2*radius} ${radius+5}`}
-                                  stroke="#7f1d1d" strokeWidth="12" fill="none" strokeLinecap="round"
-                                />
-                                <path
-                                  d={`M 20 ${radius+5} A ${radius} ${radius} 0 0 1 ${20 + 2*radius} ${radius+5}`}
-                                  stroke="#16a34a" strokeWidth="12" fill="none" strokeLinecap="round"
-                                  style={{ strokeDasharray: `${circumference}px`, strokeDashoffset: `${offset}px` }}
-                                />
-                                <text x="50%" y="60" textAnchor="middle" fill="#fff" fontSize="14" fontWeight="600">
-                                  {rate}%
-                                </text>
-                              </svg>
-
-                              {/* Text */}
-                              <div className="ml-4">
-                                <div className="text-white font-semibold text-sm">{wins}W</div>
-                                <div className="text-white font-semibold text-sm">{losses}L</div>
-                                <div className="text-gray-400 text-xs">{matches} matchs</div>
+                            return (
+                              <div className="inline-flex items-center justify-center">
+                                <svg width="120" height="70" viewBox={`0 0 ${radius * 3} ${radius * 1.75}`}>
+                                  {/* Base red arc */}
+                                  <path
+                                    d={`M 20 ${radius+5} A ${radius} ${radius} 0 0 1 ${20 + 2*radius} ${radius+5}`}
+                                    stroke="#7f1d1d" strokeWidth="12" fill="none" strokeLinecap="round"
+                                  />
+                                  {/* Green progress arc */}
+                                  <path
+                                    d={`M 20 ${radius+5} A ${radius} ${radius} 0 0 1 ${20 + 2*radius} ${radius+5}`}
+                                    stroke="#16a34a" strokeWidth="12" fill="none" strokeLinecap="round"
+                                    style={{ strokeDasharray: `${circumference}px`, strokeDashoffset: `${offset}px` }}
+                                  />
+                                  {/* Percentage text */}
+                                  <text x="50%" y="60" textAnchor="middle" fill="#fff" fontSize="14" fontWeight="600">{rate}%</text>
+                                </svg>
+                                <div className="ml-4">
+                                  <div className="text-white font-semibold text-sm">{wins}W </div>
+                                  <div className="text-white font-semibold text-sm">{losses}L</div>
+                                  <div className="text-gray-400 text-xs">{matches} matchs</div>
+                                </div>
                               </div>
-                            </div>
-                          );
+                            );
+
                         })()}
                 </td>
 
