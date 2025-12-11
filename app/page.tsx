@@ -52,6 +52,7 @@ const getTierColor = (tier?: string) => {
     case "diamond": return "bg-indigo-500 text-white";
     case "emerald": return "bg-green-500 text-white";
     case "platinum": return "bg-teal-500 text-white";
+    case "gold": return "bg-teal-500 text-yellow";
     default: return "bg-gray-700 text-white";
   }
 
